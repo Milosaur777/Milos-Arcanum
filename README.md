@@ -135,6 +135,8 @@ That's it. You now have a complete frontend design agent.
 | **VPS** | SSH server management — deploy and manage remote infrastructure |
 | **ts-lsp** | TypeScript Language Server — hover info, go-to-definition, find references, diagnostics, symbol search |
 
+The **first three** (21stdev, shadcn, ts-lsp) are pre-configured in `.opencode/mcp_servers.json` and work out of the box. The rest (Webflow, Supabase, n8n, Obsidian, VPS) require user-provided API keys or local paths — see [MCP_WALKTHROUGH.md](./MCP_WALKTHROUGH.md) for setup instructions.
+
 ---
 
 ## Project Structure
@@ -146,6 +148,9 @@ frontend-launchpad-agent/
 ├── DESIGN.md                     # Design system tokens (dark-first portfolio)
 ├── ROADMAP.md                    # Project plan & architecture
 ├── MCP_WALKTHROUGH.md            # Complete MCP setup guide
+│
+├── .opencode/
+│   └── mcp_servers.json          # MCP servers (21stdev, shadcn, ts-lsp)
 │
 ├── .agents/
 │   ├── skills/                   # 21 specialized skills

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcpServers": {
+    "21stdev": {
+      "command": "npx",
+      "args": ["-y", "@21st-dev/magic@latest"],
+      "description": "UI component search & generation from 21st.dev"
+    },
+    "shadcn": {
+      "command": "npx",
+      "args": ["shadcn@latest", "mcp"],
+      "description": "shadcn/ui component registry"
+    },
+    "ts-lsp": {
+      "command": "npx",
+      "args": ["-y", "ts-lsp-mcp", "serve", "--stdio"],
+      "description": "TypeScript LSP — hover, definition, references, diagnostics, symbols"
+    }
+  }
+}

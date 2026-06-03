@@ -8,7 +8,7 @@
 <p align="center">
   <a href="#"><img src="https://img.shields.io/badge/skills-21-blue?style=flat&logo=react" alt="Skills"></a>
   <a href="#"><img src="https://img.shields.io/badge/agents-2-green?style=flat&logo=openai" alt="Agents"></a>
-  <a href="#"><img src="https://img.shields.io/badge/MCP%20servers-7-orange?style=flat" alt="MCP Servers"></a>
+  <a href="#"><img src="https://img.shields.io/badge/MCP%20servers-8-orange?style=flat" alt="MCP Servers"></a>
   <a href="#"><img src="https://img.shields.io/badge/rules-7-purple?style=flat&logo=checkmarx" alt="Rules"></a>
   <a href="#"><img src="https://img.shields.io/badge/license-MIT-yellow.svg" alt="License"></a>
 </p>
@@ -19,7 +19,7 @@
 
 This is an **AI Frontend Launchpad** — a complete, portable environment for building production-quality frontends using AI.
 
-It bundles **21 specialized skills**, **2 review agents**, **7 MCP servers**, **7 coding rules**, and a full **design system** into one project. Clone it, run one setup command, and your AI assistant becomes a senior frontend designer capable of:
+It bundles **21 specialized skills**, **2 review agents**, **8 MCP servers**, **7 coding rules**, and a full **design system** into one project. Clone it, run one setup command, and your AI assistant becomes a senior frontend designer capable of:
 
 - Building entire pages and dashboards from a single prompt
 - Generating design systems with tokens, palettes, and typography scales
@@ -133,6 +133,7 @@ That's it. You now have a complete frontend design agent.
 | **n8n** | Workflow automation — connect APIs, schedule tasks, process data |
 | **Obsidian** | Knowledge management — read/write/search notes in your vault |
 | **VPS** | SSH server management — deploy and manage remote infrastructure |
+| **ts-lsp** | TypeScript Language Server — hover info, go-to-definition, find references, diagnostics, symbol search |
 
 ---
 

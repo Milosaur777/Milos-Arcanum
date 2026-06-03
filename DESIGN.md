@@ -1,4 +1,4 @@
-# DESIGN.md - Developer Portfolio
+# DESIGN.md — Frontend Launchpad Agent
 
 ## 1. Visual Theme & Atmosphere
 

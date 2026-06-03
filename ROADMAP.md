@@ -1,4 +1,4 @@
-# Frontend Designer Agent - Roadmap & Project Plan
+# Frontend Launchpad Agent - Roadmap & Project Plan
 
 ## Overview
 
@@ -27,6 +27,27 @@ The `frontend-designer` agent is a reusable, global OpenCode agent configured to
 | supabase | Active | Database & backend |
 | vps | Active | SSH server management |
 | webflow | Active | No-code publishing |
+
+---
+
+### MCP Management
+
+MCP servers are defined in `~/.config/opencode/opencode.json`'s `mcp` section.
+
+**Toggle on/off:** Set `"enabled": false` on any server. Or use the `tools` config to disable per-agent:
+```json
+"tools": { "mcp-name_*": false }
+```
+
+**Verify:** `opencode mcp list` or `/mcp` in TUI.
+
+**Config rules:**
+- `command` must be an **array** of strings, never a single string
+- Environment vars use the key `"environment"` (not `"env"`)
+- `"type"` is required (`"local"` or `"remote"`)
+- `additionalProperties: false` means unknown fields silently break the entry
+
+**After an update:** Config is loaded once at startup. Restart opencode for changes to take effect. If MCPs disappear, check for config validation errors (field renames, type mismatches).
 
 ---
 

@@ -3,5 +3,10 @@
   "instructions": [
     "AGENTS.md",
     "DESIGN.md"
-  ]
+  ],
+  "skills": {
+    "paths": [
+      ".agents/skills"
+    ]
+  }
 }

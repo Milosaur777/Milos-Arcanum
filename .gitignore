@@ -40,3 +40,14 @@ next-env.d.ts
 
 # Logs
 *.log
+
+.vercel
+
+# Unrelated projects
+Anime Artist/
+Areno Crypto Project/
+LP2/
+
+# Password store
+**/pass/
+

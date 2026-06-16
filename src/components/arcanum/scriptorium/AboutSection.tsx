@@ -25,39 +25,18 @@ export default function AboutSection() {
               alt="Parchment scroll"
               className="w-full h-auto"
             />
-            
+
             {/* Text overlay positioned on the parchment */}
-            <div className="absolute top-[45%] left-1/2 -translate-x-1/2 w-[75%] md:w-[70%] text-center">
-              <p className="font-cormorant text-base md:text-lg leading-relaxed text-parchment-ink/90">
+            <div className="absolute top-[150px] left-1/2 -translate-x-1/2 w-[70%] md:w-[60%] text-center">
+              <p className="font-exocet text-xl md:text-2xl leading-snug text-parchment-ink/90">
                 I am a digital artist and worldbuilder passionate about art, games and the stories that linger in forgotten places.
               </p>
-              <p className="font-cormorant text-base md:text-lg leading-relaxed text-parchment-ink/90 mt-4">
+              <p className="font-exocet text-xl md:text-2xl leading-snug text-parchment-ink/90 mt-4">
                 Through light, shadow, I strive to evoke emotion and mystery, inviting you to step into realms where imagination and darkness entwine.
               </p>
             </div>
           </div>
         </motion.div>
-
-        {/* Decorative divider */}
-        <div className="flex items-center justify-center gap-4 my-16">
-          <div className="relative w-24 h-4">
-            <img
-              src="/images/line-separator.avif"
-              alt="Decorative divider"
-              className="w-full h-full object-contain"
-            />
-          </div>
-          <svg className="w-8 h-8 text-parchment-gold/40" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2L15 9L22 9L16 14L18 21L12 17L6 21L8 14L2 9L9 9L12 2Z" />
-          </svg>
-          <div className="relative w-24 h-4">
-            <img
-              src="/images/line-separator.avif"
-              alt="Decorative divider"
-              className="w-full h-full object-contain"
-            />
-          </div>
-        </div>
       </div>
     </section>
   );

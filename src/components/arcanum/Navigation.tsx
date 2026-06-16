@@ -43,7 +43,7 @@ export default function Navigation() {
         }`}
       >
         <div className="mx-auto max-w-7xl px-3 md:px-8">
-          <div className="flex h-14 md:h-16 items-center justify-between md:justify-center gap-2 md:gap-4">
+          <div className="flex h-16 md:h-20 items-center justify-between md:justify-center gap-2 md:gap-4">
             {/* Logo - always visible on all screens */}
             <button
               onClick={() => scrollToSection("#hero")}
@@ -52,38 +52,41 @@ export default function Navigation() {
               <img
                 src="/images/logo-m.png"
                 alt="Milo's Arcanum"
-                className="h-12 md:h-24 w-auto group-hover:drop-shadow-[0_0_8px_rgba(212,154,26,0.6)] transition-all duration-300"
+                className="h-16 md:h-32 w-auto group-hover:drop-shadow-[0_0_8px_rgba(212,154,26,0.6)] transition-all duration-300"
               />
               <span className="font-exocet text-sm md:text-base font-bold tracking-widest hidden sm:block group-hover:text-glow-gold transition-all duration-300" style={{ color: '#c2ac7b' }}>
                 Arcanum
               </span>
             </button>
 
-            {/* Nav Links - all screens */}
-            <nav className="flex items-center gap-2 md:gap-4 shrink-0">
-              {/* Divider - desktop only */}
-              <div className="hidden md:block w-px h-6 bg-storm-moon/20" />
-              
-              {navLinks.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => scrollToSection(link.href)}
-                  className="font-cinzel text-[10px] md:text-sm font-bold text-storm-moon/60 hover:text-parchment-gold hover:text-glow-gold hover:drop-shadow-[0_0_8px_rgba(212,154,26,0.5)] transition-all duration-300 tracking-wider md:tracking-widest uppercase cursor-pointer whitespace-nowrap"
-                >
-                  <span className="md:hidden">{link.mobileLabel || link.label}</span>
-                  <span className="hidden md:inline">{link.label}</span>
-                </button>
-              ))}
-            </nav>
+            {/* Right side group: Nav Links + Hamburger (close together) */}
+            <div className="flex items-center gap-2 md:gap-4 shrink-0">
+              {/* Nav Links - all screens */}
+              <nav className="flex items-center gap-3 md:gap-4 shrink-0">
+                {/* Divider - desktop only */}
+                <div className="hidden md:block w-px h-6 bg-storm-moon/20" />
+                
+                {navLinks.map((link) => (
+                  <button
+                    key={link.href}
+                    onClick={() => scrollToSection(link.href)}
+                    className="font-cinzel text-[10px] md:text-sm font-bold text-storm-moon/60 hover:text-parchment-gold hover:text-glow-gold hover:drop-shadow-[0_0_8px_rgba(212,154,26,0.5)] transition-all duration-300 tracking-wider md:tracking-widest uppercase cursor-pointer whitespace-nowrap"
+                  >
+                    <span className="md:hidden">{link.mobileLabel || link.label}</span>
+                    <span className="hidden md:inline">{link.label}</span>
+                  </button>
+                ))}
+              </nav>
 
-            {/* Mobile menu button - hidden since nav is inline */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden shrink-0 w-8 h-8 rounded-lg bg-storm-mist/20 border border-parchment-gold/30 flex items-center justify-center text-parchment-gold hover:text-glow-gold hover:border-parchment-gold/60 hover:shadow-[0_0_10px_rgba(212,154,26,0.3)] transition-all duration-300"
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
-            </button>
+              {/* Mobile menu button */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="md:hidden shrink-0 w-8 h-8 rounded-lg bg-storm-mist/20 border border-parchment-gold/30 flex items-center justify-center text-parchment-gold hover:text-glow-gold hover:border-parchment-gold/60 hover:shadow-[0_0_10px_rgba(212,154,26,0.3)] transition-all duration-300"
+                aria-label="Toggle menu"
+              >
+                {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+              </button>
+            </div>
           </div>
         </div>
       </motion.header>

@@ -10,14 +10,14 @@ export default function FooterSection() {
 
   return (
     <footer
-      className="relative pt-8 pb-6 bg-void-black overflow-hidden"
+      className="relative pt-8 pb-6 overflow-hidden"
       aria-label="Footer"
     >
       {/* Top decorative border */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-parchment-gold/30 to-transparent" />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-4xl px-4">
+      <div className="relative mx-auto max-w-4xl px-4">
         {/* Logo centered */}
         <div className="flex flex-col items-center mb-4">
           <img

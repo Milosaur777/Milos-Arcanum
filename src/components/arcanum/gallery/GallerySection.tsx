@@ -138,13 +138,6 @@ export default function GallerySection() {
           <p className="font-cormorant text-lg text-storm-moon/60 italic max-w-lg mx-auto">
             Curated treasures from the Arcanum.
           </p>
-          <div className="relative w-48 md:w-64 h-6 mx-auto mt-4">
-            <img
-              src="/images/line-separator.avif"
-              alt="Decorative divider"
-              className="w-full h-full object-contain"
-            />
-          </div>
         </motion.div>
 
         {/* Category Filters - Styled as wax seals */}

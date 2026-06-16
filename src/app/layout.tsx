@@ -34,7 +34,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cinzel.variable} ${cormorant.variable} ${blackletter.variable} dark antialiased`}
+      className={`${cinzel.variable} ${cormorant.variable} ${blackletter.variable} dark antialiased overflow-x-hidden`}
     >
       <body className="min-h-full flex flex-col bg-storm-void text-foreground overflow-x-hidden">
         {children}

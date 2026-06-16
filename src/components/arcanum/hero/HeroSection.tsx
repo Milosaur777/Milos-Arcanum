@@ -94,21 +94,21 @@ export default function HeroSection() {
           sizes="100vw"
         />
         {/* Dark overlay to ensure text readability - lighter on mobile */}
-        <div className="absolute top-0 left-0 right-0 bottom-0 w-screen min-w-full bg-gradient-to-t from-storm-void via-storm-void/30 to-storm-void/50 md:via-storm-void/40 md:to-storm-void/60" />
+        <div className="absolute top-0 left-0 right-0 bottom-0 w-full bg-gradient-to-t from-storm-void via-storm-void/30 to-storm-void/50 md:via-storm-void/40 md:to-storm-void/60" />
         {/* Bottom gradient for smooth transition */}
-        <div className="absolute bottom-0 left-0 right-0 w-screen min-w-full h-48 bg-gradient-to-t from-storm-void to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 w-full h-48 bg-gradient-to-t from-storm-void to-transparent" />
       </div>
 
       {/* Mist layers */}
       <div ref={mistRef} className="absolute inset-0 pointer-events-none" aria-hidden="true">
         {/* Mist layer 1 - foreground */}
-        <div className="mist-layer absolute bottom-0 left-0 w-[calc(100%+80px)] -left-[40px] h-48 md:h-64 bg-gradient-to-t from-storm-void/80 via-storm-mist/40 to-transparent mist-drift" />
+        <div className="mist-layer absolute bottom-0 left-0 w-full h-48 md:h-64 bg-gradient-to-t from-storm-void/80 via-storm-mist/40 to-transparent mist-drift" />
         
         {/* Mist layer 2 - midground */}
-        <div className="mist-layer absolute bottom-20 left-0 w-[calc(100%+80px)] -left-[40px] h-32 md:h-48 bg-gradient-to-t from-storm-void/60 via-storm-cloud/30 to-transparent mist-drift-slow" />
+        <div className="mist-layer absolute bottom-20 left-0 w-full h-32 md:h-48 bg-gradient-to-t from-storm-void/60 via-storm-cloud/30 to-transparent mist-drift-slow" />
         
         {/* Mist layer 3 - background */}
-        <div className="mist-layer absolute bottom-40 left-0 w-[calc(100%+80px)] -left-[40px] h-24 md:h-32 bg-gradient-to-t from-storm-mist/40 via-storm-cloud/20 to-transparent mist-drift-fast" />
+        <div className="mist-layer absolute bottom-40 left-0 w-full h-24 md:h-32 bg-gradient-to-t from-storm-mist/40 via-storm-cloud/20 to-transparent mist-drift-fast" />
         
         {/* Floating mist particles */}
         <div className="mist-layer absolute top-1/3 left-1/4 w-32 h-32 rounded-full bg-storm-cloud/10 blur-3xl mist-drift" />
@@ -163,7 +163,7 @@ export default function HeroSection() {
       </div>
 
       {/* Bottom gradient transition to dark */}
-      <div className="absolute bottom-0 left-0 right-0 w-screen min-w-full h-32 bg-gradient-to-t from-storm-void to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 w-full h-32 bg-gradient-to-t from-storm-void to-transparent pointer-events-none" />
     </section>
   );
 }

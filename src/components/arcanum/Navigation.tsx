@@ -59,19 +59,17 @@ export default function Navigation() {
               </span>
             </button>
 
-            {/* Nav Links - visible on all screens, smaller on mobile */}
-            <nav className="flex items-center gap-2 md:gap-4 overflow-x-auto no-scrollbar">
-              {/* Divider - hidden on mobile */}
-              <div className="hidden md:block w-px h-6 bg-storm-moon/20" />
+            {/* Nav Links - desktop only */}
+            <nav className="hidden md:flex items-center gap-4">
+              <div className="w-px h-6 bg-storm-moon/20" />
               
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => scrollToSection(link.href)}
-                  className="font-cinzel text-[10px] md:text-sm font-bold text-storm-moon/60 hover:text-parchment-gold hover:text-glow-gold hover:drop-shadow-[0_0_8px_rgba(212,154,26,0.5)] transition-all duration-300 tracking-widest uppercase cursor-pointer whitespace-nowrap"
+                  className="font-cinzel text-sm font-bold text-storm-moon/60 hover:text-parchment-gold hover:text-glow-gold hover:drop-shadow-[0_0_8px_rgba(212,154,26,0.5)] transition-all duration-300 tracking-widest uppercase cursor-pointer whitespace-nowrap"
                 >
-                  <span className="md:hidden">{link.mobileLabel || link.label}</span>
-                  <span className="hidden md:inline">{link.label}</span>
+                  {link.label}
                 </button>
               ))}
             </nav>

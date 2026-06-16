@@ -52,7 +52,7 @@ export default function Navigation() {
               <img
                 src="/images/logo-m.png"
                 alt="Milo's Arcanum"
-                className="h-12 md:h-14 w-auto group-hover:drop-shadow-[0_0_8px_rgba(212,154,26,0.6)] transition-all duration-300"
+                className="h-[72px] md:h-[84px] w-auto group-hover:drop-shadow-[0_0_8px_rgba(212,154,26,0.6)] transition-all duration-300"
               />
               <span className="font-exocet text-sm md:text-base font-bold tracking-widest hidden sm:block group-hover:text-glow-gold transition-all duration-300" style={{ color: '#c2ac7b' }}>
                 Arcanum

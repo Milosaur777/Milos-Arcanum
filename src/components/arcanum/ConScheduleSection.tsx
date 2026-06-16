@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, MapPin, ChevronDown, Navigation } from "lucide-react";
+import { Calendar, MapPin, Navigation } from "lucide-react";
 
 const conventions = [
   {
@@ -150,7 +150,11 @@ export default function ConScheduleSection() {
                         animate={{ rotate: isExpanded ? 180 : 0 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <ChevronDown className="w-5 h-5 text-storm-moon/60" />
+                        <img
+                          src="/images/arrow-down.avif"
+                          alt="Expand"
+                          className="w-4 h-4 md:w-5 md:h-5 object-contain"
+                        />
                       </motion.div>
                     </div>
                   </div>

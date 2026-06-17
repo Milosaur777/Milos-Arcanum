@@ -157,7 +157,7 @@ export default function GallerySection() {
         {/* Masonry Grid */}
         <motion.div
           layout
-          className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {filteredArtworks.map((artwork, index) => (
             <motion.div
@@ -166,7 +166,6 @@ export default function GallerySection() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="break-inside-avoid"
             >
               <ArtworkCard 
                 artwork={artwork} 

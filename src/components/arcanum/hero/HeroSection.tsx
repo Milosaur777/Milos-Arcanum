@@ -83,7 +83,7 @@ export default function HeroSection() {
             />
           </div>
           <p className="font-cormorant text-base md:text-lg text-storm-moon/60 italic max-w-md mx-auto px-4">
-            &ldquo;Where the storm meets the scriptorium, and the void beyond whispers secrets...&rdquo;
+            Everything I make is something I once wished existed.
           </p>
         </motion.div>
 

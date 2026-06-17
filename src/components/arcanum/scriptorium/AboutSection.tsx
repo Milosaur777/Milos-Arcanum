@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function AboutSection() {
   return (
     <section 
-      className="relative py-24 md:py-32 min-h-screen overflow-hidden"
+      className="relative py-24 md:py-32"
       aria-label="About section"
     >
       {/* Content */}
@@ -27,11 +27,11 @@ export default function AboutSection() {
             />
 
             {/* Text overlay positioned on the parchment */}
-            <div className="absolute top-[50px] md:top-[150px] left-1/2 -translate-x-1/2 w-[90%] md:w-[80%] text-center">
-              <p className="font-blackletter text-[20px] md:text-[32px] leading-snug text-[#8b0000]">
+            <div className="absolute top-[60px] left-1/2 -translate-x-1/2 w-[88%] md:w-[76%] text-center">
+              <p className="font-blackletter text-[20px] md:text-[32px] leading-snug text-[#6b0000]" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.15)' }}>
                 I am a digital artist and worldbuilder passionate about art, games and the stories that linger in forgotten places.
               </p>
-              <p className="font-blackletter text-[20px] md:text-[32px] leading-snug text-[#8b0000] mt-6">
+              <p className="font-blackletter text-[20px] md:text-[32px] leading-snug text-[#6b0000] mt-6" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.15)' }}>
                 Through light, shadow, I strive to evoke emotion and mystery, inviting you to step into realms where imagination and darkness entwine.
               </p>
             </div>

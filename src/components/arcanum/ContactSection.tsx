@@ -143,7 +143,7 @@ export default function ContactSection() {
                 <div className="flex justify-center -mt-[35px] md:-mt-2">
                   <button
                     type="submit"
-                    className="relative group px-8 py-3 bg-parchment-crimson rounded-full border border-parchment-gold/40 shadow-lg shadow-parchment-crimson/30 hover:shadow-xl hover:shadow-parchment-gold/40 transition-all duration-300 hover:scale-105 hover:border-parchment-gold/70"
+                    className="relative group px-8 py-3 bg-parchment-crimson rounded-full border border-parchment-gold/80 shadow-[0_0_12px_rgba(194,172,123,0.35)] hover:shadow-[0_0_20px_rgba(194,172,123,0.5)] transition-all duration-300 hover:scale-105 hover:border-parchment-gold"
                   >
                     <span className="flex items-center gap-2">
                       <svg className="w-4 h-4 text-parchment-gold/80" viewBox="0 0 24 24" fill="currentColor">

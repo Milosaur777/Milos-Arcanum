@@ -16,7 +16,7 @@ export default function AboutSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mb-16 md:mx-0 -mx-4"
+          className="relative"
         >
           {/* Parchment background image */}
           <div className="relative w-full">
@@ -27,7 +27,7 @@ export default function AboutSection() {
             />
 
             {/* Text overlay positioned on the parchment */}
-            <div className="absolute top-[50px] md:top-[150px] left-1/2 -translate-x-1/2 w-[90%] md:w-[80%] text-center">
+            <div className="absolute top-[60px] left-1/2 -translate-x-1/2 w-[70%] md:w-[60%] text-center">
               <p className="font-blackletter text-[20px] md:text-[32px] leading-snug text-[#8b0000]">
                 I am a digital artist and worldbuilder passionate about art, games and the stories that linger in forgotten places.
               </p>

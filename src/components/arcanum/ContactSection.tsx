@@ -74,13 +74,13 @@ export default function ContactSection() {
             />
             
             {/* Form overlay positioned on the parchment */}
-            <div className="absolute top-[60px] left-1/2 -translate-x-1/2 w-[88%] md:w-[76%]">
+            <div className="absolute top-[60px] left-1/2 -translate-x-1/2 w-[70%] md:w-[60%]">
               <div className="text-center mb-6">
                 <h3 className="font-cinzel text-lg md:text-xl text-parchment-ink tracking-widest mb-2">
                   NOTICE OF COMMISSION
                 </h3>
                 <p className="font-cormorant text-xs text-parchment-ink italic">
-                  Order of the Arcanum — Anno Domini 2026
+                  Order of the Arcanum - Anno Domini 2026
                 </p>
               </div>
 
@@ -126,7 +126,7 @@ export default function ContactSection() {
                   <label className="font-cinzel text-[10px] text-parchment-ink tracking-widest uppercase mb-1 block">
                     The Message
                   </label>
-                  <div className="relative border-b-2 border-parchment-ink/20 focus-within:border-parchment-gold transition-colors">
+                  <div className="relative">
                     <textarea
                       name="message"
                       value={formState.message}

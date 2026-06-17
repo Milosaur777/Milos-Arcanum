@@ -22,7 +22,7 @@ const blackletter = UnifrakturMaguntia({
 
 export const metadata: Metadata = {
   title: "Milo's Arcanum | Art Gallery",
-  description: "A curated gallery of dark fantasy, gothic medieval, and occult-inspired artwork. Explore the storm-crowned castle, the illuminated scriptorium, and the void beyond.",
+  description: "A curated gallery of dark fantasy, gothic medieval, manga, and occult-inspired artwork.",
 
 };
 

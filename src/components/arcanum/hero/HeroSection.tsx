@@ -1,64 +1,12 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 import Image from "next/image";
 
 export default function HeroSection() {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const mistRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    let targetScrollY = 0;
-    let currentScrollY = 0;
-    let rafId: number;
-    
-    const handleScroll = () => {
-      targetScrollY = window.scrollY;
-    };
-    
-    const animate = () => {
-      if (!heroRef.current || !mistRef.current || !imageRef.current) {
-        rafId = requestAnimationFrame(animate);
-        return;
-      }
-      
-      // Smooth interpolation (lerp) for buttery scroll
-      const ease = 0.08;
-      currentScrollY += (targetScrollY - currentScrollY) * ease;
-      
-      const heroHeight = heroRef.current.offsetHeight;
-      const progress = Math.min(currentScrollY / heroHeight, 1);
-      
-      // Parallax effect for mist layers
-      const mistLayers = mistRef.current.querySelectorAll(".mist-layer");
-      mistLayers.forEach((layer, index) => {
-        const speed = (index + 1) * 0.3;
-        (layer as HTMLElement).style.transform = `translateY(${currentScrollY * speed}px)`;
-        (layer as HTMLElement).style.opacity = `${1 - progress * 0.8}`;
-      });
-      
-      // Parallax effect for castle image - only vertical movement, no scale
-      imageRef.current.style.transform = `translateY(${currentScrollY * 0.15}px)`;
-      imageRef.current.style.opacity = `${1 - progress * 0.5}`;
-      
-      rafId = requestAnimationFrame(animate);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    rafId = requestAnimationFrame(animate);
-    
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      cancelAnimationFrame(rafId);
-    };
-  }, []);
-
   return (
     <section
-      ref={heroRef}
       className="relative h-screen w-full overflow-hidden bg-storm-void"
       aria-label="Hero section - Storm crowned castle"
     >
@@ -71,10 +19,7 @@ export default function HeroSection() {
       </div>
 
       {/* Castle Image Background */}
-      <div
-        ref={imageRef}
-        className="absolute inset-0 w-full h-full transition-transform will-change-transform"
-      >
+      <div className="absolute inset-0 w-full h-full">
         {/* Desktop castle image */}
         <Image
           src="/images/hero-castle.avif"
@@ -100,7 +45,7 @@ export default function HeroSection() {
       </div>
 
       {/* Mist layers */}
-      <div ref={mistRef} className="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         {/* Mist layer 1 - foreground */}
         <div className="mist-layer absolute bottom-0 left-1/2 -translate-x-1/2 w-[200vw] h-48 md:h-64 bg-gradient-to-t from-storm-void/80 via-storm-mist/40 to-transparent mist-drift" />
         

@@ -11,14 +11,34 @@ export default function ContactSection() {
     message: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
+    setIsLoading(true);
+    setIsError(false);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formState),
+      });
+
+      if (!res.ok) throw new Error("Failed");
+
+      setIsSubmitted(true);
+      setFormState({ name: "", email: "", message: "" });
+      setTimeout(() => setIsSubmitted(false), 3000);
+    } catch {
+      setIsError(true);
+      setTimeout(() => setIsError(false), 3000);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -151,10 +171,11 @@ export default function ContactSection() {
           <button
             type="submit"
             onClick={handleSubmit}
-            className="relative group px-8 py-3 bg-parchment-crimson rounded-full border border-parchment-gold/80 shadow-[0_0_12px_rgba(194,172,123,0.35)] hover:shadow-[0_0_20px_rgba(194,172,123,0.5)] transition-all duration-300 hover:scale-105 hover:border-parchment-gold"
+            disabled={isLoading}
+            className="relative group px-8 py-3 bg-parchment-crimson rounded-full border border-parchment-gold/80 shadow-[0_0_12px_rgba(194,172,123,0.35)] hover:shadow-[0_0_20px_rgba(194,172,123,0.5)] transition-all duration-300 hover:scale-105 hover:border-parchment-gold disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
           >
             <span className="font-cinzel text-xs text-white tracking-widest uppercase">
-              {isSubmitted ? "Sent by Raven" : "Seal & Send"}
+              {isLoading ? "Sending..." : isSubmitted ? "Sent by Raven" : isError ? "Failed. Try again." : "Seal & Send"}
             </span>
           </button>
         </div>

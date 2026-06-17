@@ -18,13 +18,13 @@ interface ArtworkItem {
 const artworks: ArtworkItem[] = [
   {
     id: 1,
-    title: "Fallen Vanguard",
+    title: "Hex Lasher",
     year: "2023",
     category: "Sketches",
     etiquette: "Sketch",
-    image: "/images/sketches/androgenous_angel.avif",
+    image: "/images/sketches/witchfighter.avif",
     materials: "ArtRage Vitae (digital, pencil simulation)",
-    thoughts: "Neither man nor woman, I set out to draw the most androgynous figure I could.",
+    thoughts: "A zoner, a love letter to fighting games. Laser whip in one hand, floating above the ground, casting spells before you close the gap. The animations that made me fall in love with drawing are all here.",
   },
   {
     id: 2,
@@ -68,13 +68,13 @@ const artworks: ArtworkItem[] = [
   },
   {
     id: 6,
-    title: "Hex Lasher",
+    title: "Fallen Vanguard",
     year: "2023",
     category: "Sketches",
     etiquette: "Sketch",
-    image: "/images/sketches/witchfighter.avif",
+    image: "/images/sketches/androgenous_angel.avif",
     materials: "ArtRage Vitae (digital, pencil simulation)",
-    thoughts: "A zoner, a love letter to fighting games. Laser whip in one hand, floating above the ground, casting spells before you close the gap. The animations that made me fall in love with drawing are all here.",
+    thoughts: "Neither man nor woman, I set out to draw the most androgynous figure I could.",
   },
 ];
 

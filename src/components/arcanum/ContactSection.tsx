@@ -102,7 +102,7 @@ export default function ContactSection() {
                 <h3 className="font-cinzel text-[30px] md:text-[44px] font-bold text-parchment-crimson tracking-widest mb-3">
                   NOTICE OF COMMISSION
                 </h3>
-                <p className="font-cormorant text-[22px] md:text-[32px] text-parchment-ink italic">
+                <p className="font-cormorant text-[18px] md:text-[28px] text-parchment-ink italic">
                   Order of the Arcanum - Anno Domini 2026
                 </p>
               </div>
@@ -110,7 +110,7 @@ export default function ContactSection() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name field */}
                 <div className="relative">
-                  <label className="font-cinzel text-[22px] md:text-[32px] text-parchment-crimson tracking-widest uppercase mb-2 block">
+                  <label className="font-cinzel text-[22px] md:text-[32px] font-bold text-parchment-crimson tracking-widest uppercase mb-2 block">
                     Name of the Seeker
                   </label>
                   <div className="relative border-b-2 border-parchment-ink/20 focus-within:border-parchment-gold transition-colors">
@@ -128,7 +128,7 @@ export default function ContactSection() {
 
                 {/* Email field */}
                 <div className="relative">
-                  <label className="font-cinzel text-[22px] md:text-[32px] text-parchment-crimson tracking-widest uppercase mb-2 block">
+                  <label className="font-cinzel text-[22px] md:text-[32px] font-bold text-parchment-crimson tracking-widest uppercase mb-2 block">
                     Raven&apos;s Address (Email)
                   </label>
                   <div className="relative border-b-2 border-parchment-ink/20 focus-within:border-parchment-gold transition-colors">
@@ -146,7 +146,7 @@ export default function ContactSection() {
 
                 {/* Message field */}
                 <div className="relative">
-                  <label className="font-cinzel text-[22px] md:text-[32px] text-parchment-crimson tracking-widest uppercase mb-2 block">
+                  <label className="font-cinzel text-[22px] md:text-[32px] font-bold text-parchment-crimson tracking-widest uppercase mb-2 block">
                     The Message
                   </label>
                   <div className="relative">
@@ -166,7 +166,7 @@ export default function ContactSection() {
           </div>
 
           {/* Submit button - on the scroll for desktop */}
-          <div className="flex justify-center mt-8 md:absolute md:left-1/2 md:-translate-x-1/2 md:bottom-6 md:mt-0 md:z-20">
+          <div className="flex justify-center mt-8 md:absolute md:left-1/2 md:-translate-x-1/2 md:bottom-[184px] md:mt-0 md:z-20">
           <button
             type="submit"
             onClick={handleSubmit}

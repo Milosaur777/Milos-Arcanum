@@ -97,12 +97,12 @@ export default function ContactSection() {
             />
             
             {/* Form overlay positioned on the parchment */}
-            <div className="absolute top-[150px] left-1/2 -translate-x-1/2 w-[70%] md:w-[60%]">
+            <div className="absolute top-[60px] md:top-[150px] left-1/2 -translate-x-1/2 w-[70%] md:w-[60%]">
               <div className="text-center mb-8">
-                <h3 className="font-cinzel text-xl md:text-[44px] font-bold text-parchment-crimson tracking-widest mb-3">
+                <h3 className="font-cinzel text-[30px] md:text-[44px] font-bold text-parchment-crimson tracking-widest mb-3">
                   NOTICE OF COMMISSION
                 </h3>
-                <p className="font-cormorant text-xs md:text-[28px] text-parchment-ink italic">
+                <p className="font-cormorant text-[22px] md:text-[28px] text-parchment-ink italic">
                   Order of the Arcanum - Anno Domini 2026
                 </p>
               </div>
@@ -110,7 +110,7 @@ export default function ContactSection() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name field */}
                 <div className="relative">
-                  <label className="font-cinzel text-xs md:text-[30px] font-bold text-parchment-crimson tracking-widest uppercase mb-2 block">
+                  <label className="font-cinzel text-[22px] md:text-[30px] font-bold text-parchment-crimson tracking-widest uppercase mb-2 block">
                     Name of the Seeker
                   </label>
                   <div className="relative border-b-2 border-parchment-ink/20 focus-within:border-parchment-gold transition-colors">
@@ -120,7 +120,7 @@ export default function ContactSection() {
                       value={formState.name}
                       onChange={handleChange}
                       required
-                      className="w-full bg-transparent py-3 font-cormorant text-base md:text-[34px] text-parchment-ink placeholder:text-parchment-ink/60 focus:outline-none"
+                      className="w-full bg-transparent py-3 font-cormorant text-[26px] md:text-[34px] text-parchment-ink placeholder:text-parchment-ink/60 focus:outline-none"
                       placeholder="Enter thy name..."
                     />
                   </div>
@@ -128,7 +128,7 @@ export default function ContactSection() {
 
                 {/* Email field */}
                 <div className="relative">
-                  <label className="font-cinzel text-xs md:text-[30px] font-bold text-parchment-crimson tracking-widest uppercase mb-2 block">
+                  <label className="font-cinzel text-[22px] md:text-[30px] font-bold text-parchment-crimson tracking-widest uppercase mb-2 block">
                     Raven&apos;s Address (Email)
                   </label>
                   <div className="relative border-b-2 border-parchment-ink/20 focus-within:border-parchment-gold transition-colors">
@@ -138,7 +138,7 @@ export default function ContactSection() {
                       value={formState.email}
                       onChange={handleChange}
                       required
-                      className="w-full bg-transparent py-3 font-cormorant text-base md:text-[34px] text-parchment-ink placeholder:text-parchment-ink/60 focus:outline-none"
+                      className="w-full bg-transparent py-3 font-cormorant text-[26px] md:text-[34px] text-parchment-ink placeholder:text-parchment-ink/60 focus:outline-none"
                       placeholder="Enter thy correspondence address..."
                     />
                   </div>
@@ -146,7 +146,7 @@ export default function ContactSection() {
 
                 {/* Message field */}
                 <div className="relative">
-                  <label className="font-cinzel text-xs md:text-[30px] font-bold text-parchment-crimson tracking-widest uppercase mb-2 block">
+                  <label className="font-cinzel text-[22px] md:text-[30px] font-bold text-parchment-crimson tracking-widest uppercase mb-2 block">
                     The Message
                   </label>
                   <div className="relative">
@@ -156,7 +156,7 @@ export default function ContactSection() {
                       onChange={handleChange}
                       required
                       rows={3}
-                      className="w-full bg-transparent py-3 font-cormorant text-base md:text-[34px] text-parchment-ink placeholder:text-parchment-ink/60 focus:outline-none resize-none"
+                      className="w-full bg-transparent py-3 font-cormorant text-[26px] md:text-[34px] text-parchment-ink placeholder:text-parchment-ink/60 focus:outline-none resize-none"
                       placeholder="Inscribe thy inquiry here..."
                     />
                   </div>

@@ -99,7 +99,7 @@ export default function ContactSection() {
             {/* Form overlay positioned on the parchment */}
             <div className="absolute top-[60px] left-1/2 -translate-x-1/2 w-[70%] md:w-[60%]">
               <div className="text-center mb-6">
-                <h3 className="font-cinzel text-lg md:text-xl text-parchment-crimson tracking-widest mb-2">
+                <h3 className="font-cinzel text-xl md:text-2xl font-bold text-parchment-crimson tracking-widest mb-2">
                   NOTICE OF COMMISSION
                 </h3>
                 <p className="font-cormorant text-xs text-parchment-ink italic">

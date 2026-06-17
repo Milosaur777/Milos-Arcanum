@@ -24,7 +24,7 @@ const artworks: ArtworkItem[] = [
     etiquette: "Sketch",
     image: "/images/sketches/androgenous_angel.avif",
     materials: "ArtRage Vitae (digital, pencil simulation)",
-    thoughts: "Neither man nor woman. My goal was to draw a figure a androgenous angel.",
+    thoughts: "Neither man nor woman, I set out to draw the most androgynous figure I could.",
   },
   {
     id: 2,
@@ -86,6 +86,7 @@ const etiquetteColors: Record<string, string> = {
 
 export default function GallerySection() {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [expandedId, setExpandedId] = useState<number | null>(null);
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -167,7 +168,11 @@ export default function GallerySection() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="break-inside-avoid"
             >
-              <ArtworkCard artwork={artwork} />
+              <ArtworkCard 
+                artwork={artwork} 
+                isExpanded={expandedId === artwork.id}
+                onToggle={() => setExpandedId(expandedId === artwork.id ? null : artwork.id)}
+              />
             </motion.div>
           ))}
         </motion.div>
@@ -176,13 +181,17 @@ export default function GallerySection() {
   );
 }
 
-function ArtworkCard({ artwork }: { artwork: ArtworkItem }) {
+function ArtworkCard({ artwork, isExpanded, onToggle }: { artwork: ArtworkItem; isExpanded: boolean; onToggle: () => void }) {
   const [imgLoaded, setImgLoaded] = useState(false);
 
   return (
     <div className="relative group">
       {/* Gothic Frame around image */}
-      <div className="relative p-3 bg-gradient-to-b from-storm-mist/30 to-storm-void/60 rounded-lg border border-storm-cloud/20 transition-all duration-500 group-hover:border-parchment-gold/40 group-hover:shadow-2xl group-hover:shadow-parchment-gold/10">
+      <div className={`relative p-3 bg-gradient-to-b from-storm-mist/30 to-storm-void/60 rounded-lg border transition-all duration-500 ${
+        isExpanded 
+          ? "border-parchment-gold/50 shadow-2xl shadow-parchment-gold/15" 
+          : "border-storm-cloud/20 group-hover:border-parchment-gold/40 group-hover:shadow-2xl group-hover:shadow-parchment-gold/10"
+      }`}>
         {/* Inner matting */}
         <div className="relative p-2 bg-parchment-cream/5 rounded">
           {/* Ornate frame corners */}
@@ -191,8 +200,16 @@ function ArtworkCard({ artwork }: { artwork: ArtworkItem }) {
           <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-parchment-gold/40 rounded-bl" />
           <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-parchment-gold/40 rounded-br" />
 
-          {/* Artwork Image */}
-          <div className="relative w-full bg-storm-mist/20 rounded overflow-hidden">
+          {/* Artwork Image - clickable */}
+          <div 
+            className="relative w-full bg-storm-mist/20 rounded overflow-hidden cursor-pointer"
+            onClick={onToggle}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onToggle(); }}
+            aria-expanded={isExpanded}
+            aria-label={`${isExpanded ? "Collapse" : "Expand"} details for ${artwork.title}`}
+          >
             {!imgLoaded && (
               <div className="w-full aspect-[4/3] bg-gradient-to-br from-storm-mist/30 via-storm-cloud/20 to-storm-void/40 animate-pulse" />
             )}
@@ -223,29 +240,40 @@ function ArtworkCard({ artwork }: { artwork: ArtworkItem }) {
 
       {/* Description section beneath the frame */}
       <div className="mt-4 px-1 space-y-2">
-        {/* Title + Year */}
-        <div className="flex items-baseline justify-between gap-3">
+        {/* Title + Arrow */}
+        <div className="flex items-center justify-between gap-3">
           <h3 className="font-cinzel text-base md:text-lg text-storm-moon tracking-wide leading-tight">
             {artwork.title}
           </h3>
-          <span className="font-cormorant text-xs text-storm-moon/40 whitespace-nowrap italic">
-            {artwork.year}
-          </span>
+          <img
+            src="/images/arrow-down.avif"
+            alt={isExpanded ? "Collapse details" : "Expand details"}
+            className={`w-4 h-4 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
+          />
         </div>
 
-        {/* Materials */}
-        <p className="font-cormorant text-sm text-parchment-gold/70 italic leading-snug">
-          <span className="text-parchment-gold/50 text-[10px] uppercase tracking-wider font-cinzel not-italic mr-1.5">Media</span>
-          {artwork.materials}
-        </p>
+        {/* Expandable Details */}
+        <div 
+          className={`overflow-hidden transition-all duration-300 ease-out ${
+            isExpanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="pt-2 space-y-2">
+            {/* Materials */}
+            <p className="font-cormorant text-sm text-parchment-gold/70 italic leading-snug">
+              <span className="text-parchment-gold/50 text-[10px] uppercase tracking-wider font-cinzel not-italic mr-1.5">Media</span>
+              {artwork.materials}
+            </p>
 
-        {/* Divider */}
-        <div className="w-8 h-px bg-gradient-to-r from-parchment-gold/40 to-transparent" />
+            {/* Divider */}
+            <div className="w-8 h-px bg-gradient-to-r from-parchment-gold/40 to-transparent" />
 
-        {/* Thoughts */}
-        <p className="font-cormorant text-sm text-storm-moon/60 leading-relaxed">
-          {artwork.thoughts}
-        </p>
+            {/* Thoughts */}
+            <p className="font-cormorant text-sm text-storm-moon/60 leading-relaxed">
+              {artwork.thoughts}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

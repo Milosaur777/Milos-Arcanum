@@ -43,19 +43,22 @@ export default function ContactSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="font-exocet text-3xl md:text-4xl text-storm-moon mb-4 tracking-widest subtitle-pulse">
+          <div className="inline-flex items-center gap-2 rounded-full bg-storm-void px-4 py-2 border border-parchment-gold/30 mb-6">
+            <span className="text-sm font-semibold text-storm-moon">Reach Out</span>
+          </div>
+          <h2 className="font-exocet text-4xl md:text-5xl text-parchment-gold mb-4 subtitle-pulse">
             The Royal Decree
           </h2>
-          <p className="font-cormorant text-lg text-storm-moon/60 italic max-w-lg mx-auto">
-            Send a raven to the Keeper of the Arcanum. Commissions, collaborations, and inquiries welcome.
-          </p>
-          <div className="relative w-48 md:w-64 h-6 mx-auto mt-4">
+          <div className="relative w-48 md:w-64 h-6 mx-auto mb-4">
             <img
               src="/images/line-separator.avif"
               alt="Decorative divider"
               className="w-full h-full object-contain"
             />
           </div>
+          <p className="font-cormorant text-lg text-storm-moon/70 max-w-xl mx-auto">
+            Send a raven to the Keeper of the Arcanum. Commissions, collaborations, and inquiries welcome.
+          </p>
         </motion.div>
 
         {/* Contact Parchment */}

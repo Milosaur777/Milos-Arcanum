@@ -106,15 +106,22 @@ export default function GallerySection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <h2 className="font-exocet text-3xl md:text-4xl text-storm-moon mb-2 tracking-widest subtitle-pulse">
-            The Sketchbook
+          <div className="inline-flex items-center gap-2 rounded-full bg-storm-void px-4 py-2 border border-parchment-gold/30 mb-6">
+            <span className="text-sm font-semibold text-storm-moon">Collection</span>
+          </div>
+          <h2 className="font-exocet text-4xl md:text-5xl text-parchment-gold mb-4 subtitle-pulse">
+            The Reliquary
           </h2>
-          <p className="font-cinzel text-sm text-storm-moon/60 tracking-widest uppercase mb-4">
-            Evening Studies &amp; Ideas
-          </p>
-          <p className="font-cormorant text-lg text-storm-moon/60 italic max-w-lg mx-auto">
+          <div className="relative w-48 md:w-64 h-6 mx-auto mb-4">
+            <img
+              src="/images/line-separator.avif"
+              alt="Decorative divider"
+              className="w-full h-full object-contain"
+            />
+          </div>
+          <p className="font-cormorant text-lg text-storm-moon/70 max-w-xl mx-auto">
             Late-night marks on paper and screen.
           </p>
         </motion.div>

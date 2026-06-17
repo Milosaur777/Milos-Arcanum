@@ -23,8 +23,8 @@ const artworks: ArtworkItem[] = [
     category: "Sketches",
     etiquette: "Sketch",
     image: "/images/sketches/androgenous_angel.avif",
-    materials: "Digital drawing, Procreate",
-    thoughts: "A guardian carved from marble and shadow — neither man nor woman, but something older. The cracked halo felt right for a warrior who fell for the right reason.",
+    materials: "ArtRage Vitae (digital, pencil simulation)",
+    thoughts: "Neither man nor woman. My goal was to draw a figure a androgenous angel.",
   },
   {
     id: 2,
@@ -33,8 +33,8 @@ const artworks: ArtworkItem[] = [
     category: "Sketches",
     etiquette: "Sketch",
     image: "/images/sketches/biblicallyaccurrateangel.avif",
-    materials: "Pencil sketch, A4 bristol board",
-    thoughts: "Inspired by Ezekiel's vision — wheels within wheels, lined with eyes. Not terror for the sake of it, but the awe of witnessing something never meant to be seen.",
+    materials: "ArtRage Vitae (digital, pencil simulation)",
+    thoughts: "Ezekiel's vision, wheels within wheels, eyes upon eyes.",
   },
   {
     id: 3,
@@ -43,8 +43,8 @@ const artworks: ArtworkItem[] = [
     category: "Sketches",
     etiquette: "Sketch",
     image: "/images/sketches/cyberpunkz_12_11_23.avif",
-    materials: "Alcohol markers, fine liner, A4 marker paper",
-    thoughts: "Neon, chrome, and a blade in the dark. The mask hides more than a face — it hides intent. Late-night cyberpunk energy poured onto marker paper.",
+    materials: "ArtRage Vitae (digital, pencil simulation)",
+    thoughts: "A agile looking bounty hunter. He is part of a lethal crew that specialize in quick extractions.",
   },
   {
     id: 4,
@@ -53,8 +53,8 @@ const artworks: ArtworkItem[] = [
     category: "Sketches",
     etiquette: "Sketch",
     image: "/images/sketches/cutevampire_stylized.avif",
-    materials: "Digital painting, Clip Studio Paint",
-    thoughts: "A softer shadow. Wanted to prove I could do cute without losing the darkness. The bat motifs and oversized sweater? That's just my aesthetic leaking through.",
+    materials: "ArtRage Vitae (digital, pencil simulation)",
+    thoughts: "Halloween pin-up with fangs.",
   },
   {
     id: 5,
@@ -63,8 +63,8 @@ const artworks: ArtworkItem[] = [
     category: "Sketches",
     etiquette: "Sketch",
     image: "/images/sketches/moviestar.avif",
-    materials: "Graphite pencil, kneaded eraser, Strathmore paper",
-    thoughts: "Golden-age Hollywood glamour dipped in melancholy. The eyes carry a story the smile won't tell — fame's lonely edge captured in graphite.",
+    materials: "ArtRage Vitae (digital, pencil simulation)",
+    thoughts: "I wanted to make a movie poster like sketch. Her eyes are hungry and scheming.",
   },
   {
     id: 6,
@@ -73,8 +73,8 @@ const artworks: ArtworkItem[] = [
     category: "Sketches",
     etiquette: "Sketch",
     image: "/images/sketches/witchfighter.avif",
-    materials: "Ink wash, brush pen, cold-press watercolor paper",
-    thoughts: "Martial mystic. The staff is both weapon and conduit — every strike casts a spell, every spell lands like a strike. Wanted the motion to feel like speed and sorcery combined.",
+    materials: "ArtRage Vitae (digital, pencil simulation)",
+    thoughts: "A zoner, a love letter to fighting games. Laser whip in one hand, floating above the ground, casting spells before you close the gap. The animations that made me fall in love with drawing are all here.",
   },
 ];
 

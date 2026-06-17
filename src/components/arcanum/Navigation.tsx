@@ -32,10 +32,14 @@ export default function Navigation() {
   const handleNav = (href: string, isPage?: boolean) => {
     if (isPage) {
       router.push(href);
-    } else {
+    } else if (href.startsWith("#")) {
+      // Check if we're on the home page by looking for the target section
       const element = document.querySelector(href);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
+      } else {
+        // Not on home page — navigate to home with hash
+        router.push("/" + href);
       }
     }
     setIsMobileMenuOpen(false);

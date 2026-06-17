@@ -58,6 +58,7 @@ function EnergyOrb({ color, className, blur = 100 }: { color: string; className:
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
+  const [orbOpacity, setOrbOpacity] = useState(0);
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -88,6 +89,17 @@ export default function Home() {
     return () => mq.removeEventListener("change", handler);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const vh = window.innerHeight;
+      const progress = (window.scrollY - vh) / (vh * 0.5);
+      setOrbOpacity(Math.max(0, Math.min(1, progress)));
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const particles = useMemo(() =>
     Array.from({ length: isMobile ? 25 : 40 }, (_, i) => ({
       id: i,
@@ -102,7 +114,10 @@ export default function Home() {
   return (
     <div className="relative overflow-x-hidden">
       {/* ═══════ Mana Particles + Energy Orbs Layer ═══════ */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden w-full h-full">
+      <motion.div
+        className="fixed inset-0 pointer-events-none z-0 overflow-hidden w-full h-full"
+        style={{ opacity: orbOpacity }}
+      >
         {particles.map((p) => (
           <ManaParticle key={p.id} {...p} />
         ))}
@@ -112,7 +127,7 @@ export default function Home() {
         <EnergyOrb color="rgba(30, 107, 138, 0.12)" className="w-[200px] h-[200px] md:w-[500px] md:h-[500px] top-[20%] -right-10 md:-right-40" blur={isMobile ? 40 : 100} />
         <EnergyOrb color="rgba(212, 163, 115, 0.1)" className="w-[150px] h-[150px] md:w-[400px] md:h-[400px] top-[40%] md:top-[60%] left-[5%] md:left-[20%]" blur={isMobile ? 30 : 100} />
         <EnergyOrb color="rgba(139, 0, 0, 0.08)" className="w-[150px] h-[150px] md:w-[350px] md:h-[350px] bottom-[5%] md:bottom-[10%] right-[10%] md:right-[30%]" blur={isMobile ? 30 : 100} />
-      </div>
+      </motion.div>
 
       <Navigation />
       

@@ -141,27 +141,23 @@ export default function ContactSection() {
                     />
                   </div>
                 </div>
-
-                {/* Submit button */}
-                <div className="flex justify-center -mt-[35px] md:-mt-2">
-                  <button
-                    type="submit"
-                    className="relative group px-8 py-3 bg-parchment-crimson rounded-full border border-parchment-gold/80 shadow-[0_0_12px_rgba(194,172,123,0.35)] hover:shadow-[0_0_20px_rgba(194,172,123,0.5)] transition-all duration-300 hover:scale-105 hover:border-parchment-gold"
-                  >
-                    <span className="flex items-center gap-2">
-                      <svg className="w-4 h-4 text-parchment-gold/80" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
-                      </svg>
-                      <span className="font-cinzel text-xs text-white tracking-widest uppercase">
-                        {isSubmitted ? "Sent by Raven" : "Seal & Send"}
-                      </span>
-                    </span>
-                  </button>
-                </div>
               </form>
             </div>
           </div>
         </motion.div>
+
+        {/* Submit button below the scroll */}
+        <div className="flex justify-center mt-8">
+          <button
+            type="submit"
+            onClick={handleSubmit}
+            className="relative group px-8 py-3 bg-parchment-crimson rounded-full border border-parchment-gold/80 shadow-[0_0_12px_rgba(194,172,123,0.35)] hover:shadow-[0_0_20px_rgba(194,172,123,0.5)] transition-all duration-300 hover:scale-105 hover:border-parchment-gold"
+          >
+            <span className="font-cinzel text-xs text-white tracking-widest uppercase">
+              {isSubmitted ? "Sent by Raven" : "Seal & Send"}
+            </span>
+          </button>
+        </div>
       </div>
     </section>
   );

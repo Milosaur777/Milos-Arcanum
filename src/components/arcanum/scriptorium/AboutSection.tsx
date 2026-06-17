@@ -27,11 +27,11 @@ export default function AboutSection() {
             />
 
             {/* Text overlay positioned on the parchment */}
-            <div className="absolute top-[60px] left-1/2 -translate-x-1/2 w-[88%] md:w-[76%] text-center">
-              <p className="font-blackletter text-[20px] md:text-[32px] leading-snug text-[#6b0000]" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.15)' }}>
+            <div className="absolute top-[15px] md:top-[150px] left-1/2 -translate-x-1/2 w-[88%] md:w-[76%] text-center">
+              <p className="font-blackletter text-[20px] md:text-[32px] leading-snug text-black">
                 I am a digital artist and worldbuilder passionate about art, games and the stories that linger in forgotten places.
               </p>
-              <p className="font-blackletter text-[20px] md:text-[32px] leading-snug text-[#6b0000] mt-6" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.15)' }}>
+              <p className="font-blackletter text-[20px] md:text-[32px] leading-snug text-black mt-6">
                 Through light, shadow, I strive to evoke emotion and mystery, inviting you to step into realms where imagination and darkness entwine.
               </p>
             </div>

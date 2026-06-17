@@ -27,7 +27,7 @@ export default function AboutSection() {
             />
 
             {/* Text overlay positioned on the parchment */}
-            <div className="absolute top-[50px] md:top-[150px] left-1/2 -translate-x-1/2 w-[88%] md:w-[76%] text-center">
+            <div className="absolute top-[50px] md:top-[150px] left-1/2 -translate-x-1/2 w-[90%] md:w-[80%] text-center">
               <p className="font-blackletter text-[20px] md:text-[32px] leading-snug text-[#8b0000]">
                 I am a digital artist and worldbuilder passionate about art, games and the stories that linger in forgotten places.
               </p>

@@ -140,7 +140,7 @@ export default function ContactSection() {
                 </div>
 
                 {/* Submit button */}
-                <div className="flex justify-center -mt-[10px]">
+                <div className="flex justify-center -mt-2">
                   <button
                     type="submit"
                     className="relative group px-8 py-3 bg-parchment-crimson rounded-full border border-parchment-gold/40 shadow-lg shadow-parchment-crimson/30 hover:shadow-xl hover:shadow-parchment-gold/40 transition-all duration-300 hover:scale-105 hover:border-parchment-gold/70"

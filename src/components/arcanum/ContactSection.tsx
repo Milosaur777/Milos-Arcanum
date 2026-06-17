@@ -46,7 +46,7 @@ export default function ContactSection() {
           <div className="inline-flex items-center gap-2 rounded-full bg-storm-void px-4 py-2 border border-parchment-gold/30 mb-6">
             <span className="text-sm font-semibold text-storm-moon">Reach Out</span>
           </div>
-          <h2 className="font-exocet text-4xl md:text-5xl text-parchment-gold mb-4 subtitle-pulse">
+          <h2 className="font-exocet text-4xl md:text-5xl text-storm-moon mb-4 subtitle-pulse">
             The Royal Decree
           </h2>
           <div className="relative w-48 md:w-64 h-6 mx-auto mb-4">

@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import Lenis from "lenis";
 import Navigation from "@/components/arcanum/Navigation";
 import HeroSection from "@/components/arcanum/hero/HeroSection";
-import AboutSection from "@/components/arcanum/scriptorium/AboutSection";
 import GallerySection from "@/components/arcanum/gallery/GallerySection";
 import ConScheduleSection from "@/components/arcanum/ConScheduleSection";
 import ContactSection from "@/components/arcanum/ContactSection";
@@ -121,11 +120,6 @@ export default function Home() {
         {/* Hero Section - The Storm-Crowned Castle */}
         <div id="hero">
           <HeroSection />
-        </div>
-
-        {/* About Section - The Scriptorium */}
-        <div id="about">
-          <AboutSection />
         </div>
 
         {/* Gallery Section - The Reliquary */}

@@ -3,9 +3,15 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Scroll } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const navLinks = [
-  { label: "About Me", mobileLabel: "About", href: "#about" },
+  { label: "Gallery", href: "#gallery" },
+  { label: "Contact", href: "#contact" },
+];
+
+const mobileLinks = [
+  { label: "About", href: "/about", isPage: true },
   { label: "Gallery", href: "#gallery" },
   { label: "Contact", href: "#contact" },
 ];
@@ -13,6 +19,7 @@ const navLinks = [
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,10 +29,14 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  const handleNav = (href: string, isPage?: boolean) => {
+    if (isPage) {
+      router.push(href);
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
     setIsMobileMenuOpen(false);
   };
@@ -46,7 +57,7 @@ export default function Navigation() {
           <div className="flex h-10 md:h-12 items-center justify-between md:justify-center gap-2 md:gap-4">
             {/* Logo - always visible on all screens */}
             <button
-              onClick={() => scrollToSection("#hero")}
+              onClick={() => handleNav("#hero")}
               className="flex items-center gap-2 group shrink-0 mr-2"
             >
               <img
@@ -69,11 +80,10 @@ export default function Navigation() {
                 {navLinks.map((link) => (
                   <button
                     key={link.href}
-                    onClick={() => scrollToSection(link.href)}
+                    onClick={() => handleNav(link.href)}
                     className="font-cinzel text-xs md:text-base font-bold text-storm-moon/80 hover:text-parchment-gold hover:text-glow-gold hover:drop-shadow-[0_0_8px_rgba(212,154,26,0.5)] transition-all duration-300 tracking-wider md:tracking-widest uppercase cursor-pointer whitespace-nowrap"
                   >
-                    <span className="md:hidden">{link.mobileLabel || link.label}</span>
-                    <span className="hidden md:inline">{link.label}</span>
+                    {link.label}
                   </button>
                 ))}
               </nav>
@@ -102,13 +112,13 @@ export default function Navigation() {
             className="fixed inset-0 z-40 bg-storm-void/95 backdrop-blur-md pt-20 px-6"
           >
             <nav className="flex flex-col gap-6">
-              {navLinks.map((link, index) => (
+              {mobileLinks.map((link, index) => (
                 <motion.button
                   key={link.href}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  onClick={() => scrollToSection(link.href)}
+                  onClick={() => handleNav(link.href, link.isPage)}
                   className="flex items-center gap-4 py-4 border-b border-storm-cloud/20"
                 >
                   <Scroll className="w-5 h-5 text-parchment-gold" />

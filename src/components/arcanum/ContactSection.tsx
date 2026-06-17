@@ -98,8 +98,8 @@ export default function ContactSection() {
             
             {/* Form overlay positioned on the parchment */}
             <div className="absolute top-[60px] md:top-[150px] left-1/2 -translate-x-1/2 w-[70%] md:w-[60%]">
-              <div className="text-center mb-8">
-                <h3 className="font-cinzel text-[26px] md:text-[44px] font-bold text-parchment-crimson tracking-widest mb-3">
+              <div className="text-center mb-3 md:mb-8">
+                <h3 className="font-cinzel text-[26px] md:text-[44px] font-bold text-parchment-crimson tracking-widest mb-1 md:mb-3">
                   NOTICE OF COMMISSION
                 </h3>
                 <p className="font-cormorant text-[12px] md:text-[28px] text-parchment-ink italic">
@@ -107,7 +107,7 @@ export default function ContactSection() {
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-3 md:space-y-6">
                 {/* Name field */}
                 <div className="relative">
                   <label className="font-cinzel text-[12px] md:text-[30px] font-bold text-parchment-crimson tracking-widest uppercase mb-1 md:mb-2 block">
@@ -120,7 +120,7 @@ export default function ContactSection() {
                       value={formState.name}
                       onChange={handleChange}
                       required
-                      className="w-full bg-transparent py-3 font-cormorant text-[16px] md:text-[34px] text-parchment-ink placeholder:text-parchment-ink/60 focus:outline-none"
+                      className="w-full bg-transparent py-1.5 md:py-3 font-cormorant text-[16px] md:text-[34px] text-parchment-ink placeholder:text-parchment-ink/60 focus:outline-none"
                       placeholder="Enter thy name..."
                     />
                   </div>
@@ -138,7 +138,7 @@ export default function ContactSection() {
                       value={formState.email}
                       onChange={handleChange}
                       required
-                      className="w-full bg-transparent py-3 font-cormorant text-[16px] md:text-[34px] text-parchment-ink placeholder:text-parchment-ink/60 focus:outline-none"
+                      className="w-full bg-transparent py-1.5 md:py-3 font-cormorant text-[16px] md:text-[34px] text-parchment-ink placeholder:text-parchment-ink/60 focus:outline-none"
                       placeholder="Enter thy correspondence address..."
                     />
                   </div>
@@ -156,7 +156,7 @@ export default function ContactSection() {
                       onChange={handleChange}
                       required
                       rows={3}
-                      className="w-full bg-transparent py-3 font-cormorant text-[16px] md:text-[34px] text-parchment-ink placeholder:text-parchment-ink/60 focus:outline-none resize-none"
+                      className="w-full bg-transparent py-1.5 md:py-3 font-cormorant text-[16px] md:text-[34px] text-parchment-ink placeholder:text-parchment-ink/60 focus:outline-none resize-none"
                       placeholder="Inscribe thy inquiry here..."
                     />
                   </div>
@@ -173,7 +173,7 @@ export default function ContactSection() {
             disabled={isLoading}
             className="relative group px-12 py-5 bg-gradient-to-b from-parchment-crimson via-red-900 to-parchment-crimson rounded-full border-2 border-parchment-gold/90 shadow-[0_0_25px_rgba(194,172,123,0.4)] shadow-inner hover:shadow-[0_0_40px_rgba(194,172,123,0.6)] transition-all duration-300 hover:scale-110 hover:border-parchment-gold disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
           >
-            <div className="flex flex-col items-center gap-1">
+            <div className="flex flex-col items-center gap-0.5 md:gap-1">
               <span className="font-exocet text-3xl md:text-4xl text-parchment-gold drop-shadow-[0_2px_3px_rgba(0,0,0,0.6)] leading-none">M</span>
               <span className="font-cinzel text-base md:text-xl font-bold text-white tracking-widest uppercase">
                 {isLoading ? "Sending..." : isSubmitted ? "Sent by Raven" : isError ? "Failed. Try again." : "Seal & Send"}

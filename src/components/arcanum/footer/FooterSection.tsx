@@ -68,15 +68,7 @@ export default function FooterSection() {
               <span className="font-cinzel text-xs tracking-widest uppercase">Discord</span>
             </a>
             
-            {/* Email */}
-            <a
-              href="mailto:MultiMilo@Proton.me"
-              aria-label="Email"
-              className="flex items-center gap-2 text-storm-moon/60 hover:text-parchment-gold transition-all duration-300"
-            >
-              <Mail className="w-4 h-4" />
-              <span className="font-cinzel text-xs tracking-widest uppercase">Email</span>
-            </a>
+
           </div>
         </div>
 

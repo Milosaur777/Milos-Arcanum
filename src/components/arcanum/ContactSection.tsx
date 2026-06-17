@@ -99,7 +99,7 @@ export default function ContactSection() {
             {/* Form overlay positioned on the parchment */}
             <div className="absolute top-[60px] left-1/2 -translate-x-1/2 w-[70%] md:w-[60%]">
               <div className="text-center mb-6">
-                <h3 className="font-cinzel text-lg md:text-xl text-parchment-ink tracking-widest mb-2">
+                <h3 className="font-cinzel text-lg md:text-xl text-parchment-crimson tracking-widest mb-2">
                   NOTICE OF COMMISSION
                 </h3>
                 <p className="font-cormorant text-xs text-parchment-ink italic">
@@ -110,7 +110,7 @@ export default function ContactSection() {
               <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Name field */}
                 <div className="relative">
-                  <label className="font-cinzel text-[10px] text-parchment-ink tracking-widest uppercase mb-1 block">
+                  <label className="font-cinzel text-xs text-parchment-crimson tracking-widest uppercase mb-1 block">
                     Name of the Seeker
                   </label>
                   <div className="relative border-b-2 border-parchment-ink/20 focus-within:border-parchment-gold transition-colors">
@@ -120,7 +120,7 @@ export default function ContactSection() {
                       value={formState.name}
                       onChange={handleChange}
                       required
-                      className="w-full bg-transparent py-2 font-cormorant text-base text-parchment-ink placeholder:text-parchment-ink/30 focus:outline-none"
+                      className="w-full bg-transparent py-2 font-cormorant text-base text-parchment-ink placeholder:text-parchment-ink/60 focus:outline-none"
                       placeholder="Enter thy name..."
                     />
                   </div>
@@ -128,7 +128,7 @@ export default function ContactSection() {
 
                 {/* Email field */}
                 <div className="relative">
-                  <label className="font-cinzel text-[10px] text-parchment-ink tracking-widest uppercase mb-1 block">
+                  <label className="font-cinzel text-xs text-parchment-crimson tracking-widest uppercase mb-1 block">
                     Raven&apos;s Address (Email)
                   </label>
                   <div className="relative border-b-2 border-parchment-ink/20 focus-within:border-parchment-gold transition-colors">
@@ -138,7 +138,7 @@ export default function ContactSection() {
                       value={formState.email}
                       onChange={handleChange}
                       required
-                      className="w-full bg-transparent py-2 font-cormorant text-base text-parchment-ink placeholder:text-parchment-ink/30 focus:outline-none"
+                      className="w-full bg-transparent py-2 font-cormorant text-base text-parchment-ink placeholder:text-parchment-ink/60 focus:outline-none"
                       placeholder="Enter thy correspondence address..."
                     />
                   </div>
@@ -146,7 +146,7 @@ export default function ContactSection() {
 
                 {/* Message field */}
                 <div className="relative">
-                  <label className="font-cinzel text-[10px] text-parchment-ink tracking-widest uppercase mb-1 block">
+                  <label className="font-cinzel text-xs text-parchment-crimson tracking-widest uppercase mb-1 block">
                     The Message
                   </label>
                   <div className="relative">
@@ -156,7 +156,7 @@ export default function ContactSection() {
                       onChange={handleChange}
                       required
                       rows={3}
-                      className="w-full bg-transparent py-2 font-cormorant text-base text-parchment-ink placeholder:text-parchment-ink/30 focus:outline-none resize-none"
+                      className="w-full bg-transparent py-2 font-cormorant text-base text-parchment-ink placeholder:text-parchment-ink/60 focus:outline-none resize-none"
                       placeholder="Inscribe thy inquiry here..."
                     />
                   </div>
@@ -172,9 +172,9 @@ export default function ContactSection() {
             type="submit"
             onClick={handleSubmit}
             disabled={isLoading}
-            className="relative group px-8 py-3 bg-parchment-crimson rounded-full border border-parchment-gold/80 shadow-[0_0_12px_rgba(194,172,123,0.35)] hover:shadow-[0_0_20px_rgba(194,172,123,0.5)] transition-all duration-300 hover:scale-105 hover:border-parchment-gold disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+            className="relative group px-8 py-3 bg-parchment-crimson rounded-full border border-parchment-gold/80 shadow-[0_0_12px_rgba(194,172,123,0.35)] shadow-inner hover:shadow-[0_0_20px_rgba(194,172,123,0.5)] transition-all duration-300 hover:scale-105 hover:border-parchment-gold disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
           >
-            <span className="font-cinzel text-xs text-white tracking-widest uppercase">
+            <span className="font-cinzel text-sm text-white tracking-widest uppercase">
               {isLoading ? "Sending..." : isSubmitted ? "Sent by Raven" : isError ? "Failed. Try again." : "Seal & Send"}
             </span>
           </button>

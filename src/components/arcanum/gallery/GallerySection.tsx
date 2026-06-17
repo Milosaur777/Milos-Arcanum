@@ -11,91 +11,77 @@ interface ArtworkItem {
   category: string;
   etiquette: string;
   image: string;
-  height: string;
+  materials: string;
+  thoughts: string;
 }
 
 const artworks: ArtworkItem[] = [
   {
     id: 1,
-    title: "The Storm-Crowned Castle",
-    year: "2026",
-    category: "Prints",
-    etiquette: "Print",
-    image: "/images/artwork-1.jpg",
-    height: "h-64",
+    title: "Androgenous Angel",
+    year: "2023",
+    category: "Sketches",
+    etiquette: "Sketch",
+    image: "/images/sketches/androgenous_angel.avif",
+    materials: "Digital drawing, Procreate",
+    thoughts: "Exploring fluidity in form — studying how soft curves can contrast with angular, architectural shapes. The androgynous figure felt natural as a subject for this tension.",
   },
   {
     id: 2,
-    title: "Crimson Moon Ritual",
-    year: "2025",
-    category: "Originals",
-    etiquette: "Original",
-    image: "/images/artwork-2.jpg",
-    height: "h-80",
+    title: "Biblically Accurate Angel",
+    year: "2023",
+    category: "Sketches",
+    etiquette: "Sketch",
+    image: "/images/sketches/biblicallyaccurrateangel.avif",
+    materials: "Pencil sketch, A4 bristol board",
+    thoughts: "Inspired by Ezekiel's descriptions of ophanim — wheels within wheels, eyes upon eyes. Wanted to capture that ancient sense of awe and terror.",
   },
   {
     id: 3,
-    title: "The Raven's Oath",
-    year: "2026",
-    category: "Stickers",
-    etiquette: "Sticker",
-    image: "/images/artwork-3.jpg",
-    height: "h-56",
+    title: "Cyberpunk",
+    year: "2023",
+    category: "Sketches",
+    etiquette: "Sketch",
+    image: "/images/sketches/cyberpunkz_12_11_23.avif",
+    materials: "Alcohol markers, fine liner, A4 marker paper",
+    thoughts: "Late-night cyberpunk exercise. Playing with neon against shadow, wet asphalt reflections. The mask doubles as a breathing apparatus and an anonymity statement.",
   },
   {
     id: 4,
-    title: "Gothic Cathedral at Midnight",
-    year: "2025",
-    category: "Prints",
-    etiquette: "Print",
-    image: "/images/artwork-4.jpg",
-    height: "h-72",
+    title: "Cute Vampire",
+    year: "2023",
+    category: "Sketches",
+    etiquette: "Sketch",
+    image: "/images/sketches/cutevampire_stylized.avif",
+    materials: "Digital painting, Clip Studio Paint",
+    thoughts: "A lighter piece — wanted to prove I could do cute alongside the grimdark. The bat motifs and oversized sweater are a nod to my own aesthetic.",
   },
   {
     id: 5,
-    title: "The Illuminated Manuscript",
-    year: "2026",
-    category: "Pins",
-    etiquette: "Pin",
-    image: "/images/artwork-5.jpg",
-    height: "h-60",
+    title: "Movie Star",
+    year: "2023",
+    category: "Sketches",
+    etiquette: "Sketch",
+    image: "/images/sketches/moviestar.avif",
+    materials: "Graphite pencil, kneaded eraser, Strathmore paper",
+    thoughts: "Golden-age Hollywood glamour with a melancholic edge. The shadows tell the story the eyes don't want to reveal.",
   },
   {
     id: 6,
-    title: "Void Beyond the Stars",
-    year: "2025",
-    category: "Originals",
-    etiquette: "Original",
-    image: "/images/artwork-6.jpg",
-    height: "h-96",
-  },
-  {
-    id: 7,
-    title: "The Wax Seal",
-    year: "2026",
-    category: "Pins",
-    etiquette: "Pin",
-    image: "/images/artwork-7.jpg",
-    height: "h-52",
-  },
-  {
-    id: 8,
-    title: "Candlelit Scriptorium",
-    year: "2025",
-    category: "Stickers",
-    etiquette: "Sticker",
-    image: "/images/artwork-8.jpg",
-    height: "h-72",
+    title: "Witch Fighter",
+    year: "2023",
+    category: "Sketches",
+    etiquette: "Sketch",
+    image: "/images/sketches/witchfighter.avif",
+    materials: "Ink wash, brush pen, cold-press watercolor paper",
+    thoughts: "Martial meets mystical. The staff is half-weapon, half-conduit. Wanted the motion lines to feel like both speed and spellcasting.",
   },
 ];
 
-const categories = ["All", "Prints", "Stickers", "Pins", "Originals"];
+const categories = ["All", "Sketches"];
 
 const etiquetteColors: Record<string, string> = {
-  "Print": "bg-parchment-blue text-white",
-  "Sticker": "bg-parchment-gold text-storm-void",
-  "Pin": "bg-parchment-crimson text-white",
-  "Original": "bg-void-purple text-white",
+  "Sketch": "bg-parchment-crimson text-white",
 };
 
 export default function GallerySection() {
@@ -123,13 +109,13 @@ export default function GallerySection() {
           className="text-center mb-12"
         >
           <h2 className="font-exocet text-3xl md:text-4xl text-storm-moon mb-2 tracking-widest subtitle-pulse">
-            The Reliquary
+            The Sketchbook
           </h2>
           <p className="font-cinzel text-sm text-storm-moon/60 tracking-widest uppercase mb-4">
-            Gallery
+            Evening Studies &amp; Ideas
           </p>
           <p className="font-cormorant text-lg text-storm-moon/60 italic max-w-lg mx-auto">
-            Curated treasures from the Arcanum.
+            Late-night marks on paper and screen.
           </p>
         </motion.div>
 
@@ -184,15 +170,11 @@ export default function GallerySection() {
 }
 
 function ArtworkCard({ artwork }: { artwork: ArtworkItem }) {
-  const [isHovered, setIsHovered] = useState(false);
+  const [imgLoaded, setImgLoaded] = useState(false);
 
   return (
-    <div
-      className="relative group cursor-pointer"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      {/* Gothic Frame */}
+    <div className="relative group">
+      {/* Gothic Frame around image */}
       <div className="relative p-3 bg-gradient-to-b from-storm-mist/30 to-storm-void/60 rounded-lg border border-storm-cloud/20 transition-all duration-500 group-hover:border-parchment-gold/40 group-hover:shadow-2xl group-hover:shadow-parchment-gold/10">
         {/* Inner matting */}
         <div className="relative p-2 bg-parchment-cream/5 rounded">
@@ -202,48 +184,62 @@ function ArtworkCard({ artwork }: { artwork: ArtworkItem }) {
           <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-parchment-gold/40 rounded-bl" />
           <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-parchment-gold/40 rounded-br" />
 
-          {/* Artwork placeholder */}
-          <div className={`relative ${artwork.height} w-full bg-storm-mist/20 rounded overflow-hidden`}>
-            {/* Placeholder gradient pattern */}
-            <div className="absolute inset-0 bg-gradient-to-br from-storm-mist/30 via-storm-cloud/20 to-storm-void/40" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="font-cinzel text-storm-moon/20 text-sm">{artwork.title}</span>
-            </div>
-            
-            {/* Hover overlay */}
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-t from-storm-void/80 via-transparent to-transparent flex items-end justify-center pb-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isHovered ? 1 : 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="text-center">
-                <p className="font-cinzel text-sm text-storm-moon">{artwork.title}</p>
-                <p className="font-cormorant text-xs text-storm-moon/60">{artwork.year}</p>
+          {/* Artwork Image */}
+          <div className="relative w-full bg-storm-mist/20 rounded overflow-hidden">
+            {!imgLoaded && (
+              <div className="w-full aspect-[4/3] bg-gradient-to-br from-storm-mist/30 via-storm-cloud/20 to-storm-void/40 animate-pulse" />
+            )}
+            <Image
+              src={artwork.image}
+              alt={artwork.title}
+              width={800}
+              height={600}
+              className={`w-full h-auto transition-opacity duration-500 ${imgLoaded ? "opacity-100" : "opacity-0"}`}
+              onLoad={() => setImgLoaded(true)}
+            />
+
+            {/* Etiquette badge */}
+            <div className="absolute top-3 right-3 z-10">
+              <div className={`px-2.5 py-1 rounded-full font-cinzel text-[10px] tracking-wider shadow-lg ${etiquetteColors[artwork.etiquette]}`}>
+                <span className="flex items-center gap-1">
+                  <svg className="w-2.5 h-2.5" viewBox="0 0 12 12" fill="currentColor">
+                    <circle cx="6" cy="6" r="5" />
+                    <circle cx="6" cy="6" r="2" fill="none" stroke="currentColor" strokeWidth="0.5" />
+                  </svg>
+                  {artwork.etiquette}
+                </span>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Etiquette label */}
-      <motion.div
-        className="absolute -bottom-3 left-1/2 -translate-x-1/2 z-10"
-        initial={{ y: 10, opacity: 0 }}
-        animate={{ y: isHovered ? 0 : 10, opacity: isHovered ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
-      >
-        <div className={`px-3 py-1 rounded-full font-cinzel text-xs tracking-wider ${etiquetteColors[artwork.etiquette]}`}>
-          <span className="flex items-center gap-1.5">
-            {/* Mini wax seal icon */}
-            <svg className="w-3 h-3" viewBox="0 0 12 12" fill="currentColor">
-              <circle cx="6" cy="6" r="5" />
-              <circle cx="6" cy="6" r="2" fill="none" stroke="currentColor" strokeWidth="0.5" />
-            </svg>
-            {artwork.etiquette}
+      {/* Description section beneath the frame */}
+      <div className="mt-4 px-1 space-y-2">
+        {/* Title + Year */}
+        <div className="flex items-baseline justify-between gap-3">
+          <h3 className="font-cinzel text-base md:text-lg text-storm-moon tracking-wide leading-tight">
+            {artwork.title}
+          </h3>
+          <span className="font-cormorant text-xs text-storm-moon/40 whitespace-nowrap italic">
+            {artwork.year}
           </span>
         </div>
-      </motion.div>
+
+        {/* Materials */}
+        <p className="font-cormorant text-sm text-parchment-gold/70 italic leading-snug">
+          <span className="text-parchment-gold/50 text-[10px] uppercase tracking-wider font-cinzel not-italic mr-1.5">Media</span>
+          {artwork.materials}
+        </p>
+
+        {/* Divider */}
+        <div className="w-8 h-px bg-gradient-to-r from-parchment-gold/40 to-transparent" />
+
+        {/* Thoughts */}
+        <p className="font-cormorant text-sm text-storm-moon/60 leading-relaxed">
+          {artwork.thoughts}
+        </p>
+      </div>
     </div>
   );
 }

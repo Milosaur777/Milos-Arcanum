@@ -52,3 +52,6 @@ Sector1 Webflow Backup/
 # Password store
 **/pass/
 
+
+# Source assets (raw PNGs, PSDs, etc.)
+Milos art portfolio/

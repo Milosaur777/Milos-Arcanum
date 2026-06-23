@@ -99,7 +99,7 @@ export default function ContactSection() {
             {/* Form overlay positioned on the parchment */}
             <div className="absolute top-[60px] md:top-[150px] left-1/2 -translate-x-1/2 w-[70%] md:w-[60%]">
               <div className="text-center mb-3 md:mb-8">
-                <h3 className="font-cinzel text-[26px] md:text-[44px] font-bold text-parchment-crimson tracking-widest mb-1 md:mb-3">
+                <h3 className="font-cinzel text-[26px] md:text-[44px] font-bold text-parchment-ink tracking-widest mb-1 md:mb-3">
                   NOTICE OF COMMISSION
                 </h3>
                 <p className="font-cormorant text-[12px] md:text-[28px] text-parchment-ink italic">
@@ -110,7 +110,7 @@ export default function ContactSection() {
               <form onSubmit={handleSubmit} className="space-y-3 md:space-y-6">
                 {/* Name field */}
                 <div className="relative">
-                  <label className="font-cinzel text-[12px] md:text-[30px] font-bold text-parchment-crimson tracking-widest uppercase mb-1 md:mb-2 block">
+                  <label className="font-cinzel text-[12px] md:text-[30px] font-bold text-parchment-ink tracking-widest uppercase mb-1 md:mb-2 block">
                     Name of the Seeker
                   </label>
                   <div className="relative border-b-2 border-parchment-ink/20 focus-within:border-parchment-gold transition-colors">
@@ -128,7 +128,7 @@ export default function ContactSection() {
 
                 {/* Email field */}
                 <div className="relative">
-                  <label className="font-cinzel text-[12px] md:text-[30px] font-bold text-parchment-crimson tracking-widest uppercase mb-1 md:mb-2 block">
+                  <label className="font-cinzel text-[12px] md:text-[30px] font-bold text-parchment-ink tracking-widest uppercase mb-1 md:mb-2 block">
                     Raven&apos;s Address (Email)
                   </label>
                   <div className="relative border-b-2 border-parchment-ink/20 focus-within:border-parchment-gold transition-colors">
@@ -146,7 +146,7 @@ export default function ContactSection() {
 
                 {/* Message field */}
                 <div className="relative">
-                  <label className="font-cinzel text-[12px] md:text-[30px] font-bold text-parchment-crimson tracking-widest uppercase mb-1 md:mb-2 block">
+                  <label className="font-cinzel text-[12px] md:text-[30px] font-bold text-parchment-ink tracking-widest uppercase mb-1 md:mb-2 block">
                     The Message
                   </label>
                   <div className="relative">

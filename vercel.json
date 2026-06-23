@@ -1,5 +1,5 @@
 {
-  "name": "milosarcanum",
+  "name": "unhinged-oc-dating",
   "framework": "nextjs",
   "buildCommand": "npm run build",
   "outputDirectory": ".next",

@@ -43,18 +43,19 @@ next-env.d.ts
 
 .vercel
 
+# Password store
+**/pass/
+
 # Unrelated projects
 Anime Artist/
 Areno Crypto Project/
 LP2/
+LP3/
 Sector1 Webflow Backup/
-
-# Password store
-**/pass/
-
+IPTV/
+OC Dating Platform/
+CryptoGameBot/
+temp/
 
 # Source assets (raw PNGs, PSDs, etc.)
 Milos art portfolio/
-
-# Unrelated
-CryptoGameBot/

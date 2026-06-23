@@ -1,48 +1,43 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cinzel, Cormorant_Garamond, UnifrakturMaguntia } from "next/font/google";
 import "./globals.css";
-import { AuthProvider } from "@/lib/supabase-store";
-import { Toaster } from "sonner";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const cinzel = Cinzel({
+  variable: "--font-cinzel",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const blackletter = UnifrakturMaguntia({
+  variable: "--font-blackletter",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
-  title: "Unhinged — OC Dating Platform",
-  description: "Create dating profiles for your Original Characters and find the perfect match.",
-  icons: {
-    icon: [
-      { url: "/icon.avif", type: "image/avif" },
-    ],
-    apple: { url: "/icon.avif", type: "image/avif" },
-  },
+  title: "Milo's Arcanum | Art Gallery",
+  description: "A curated gallery of dark fantasy, gothic medieval, manga, and occult-inspired artwork.",
+
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} dark`}>
-      <body className="min-h-screen bg-background text-foreground antialiased">
-        <AuthProvider>
-          {children}
-          <Toaster
-            position="top-right"
-            theme="dark"
-            toastOptions={{
-              style: {
-                background: "#12121a",
-                border: "1px solid #1e1e2e",
-                color: "#fafafa",
-              },
-            }}
-          />
-        </AuthProvider>
+    <html
+      lang="en"
+      className={`${cinzel.variable} ${cormorant.variable} ${blackletter.variable} dark antialiased overflow-x-hidden`}
+    >
+      <body className="min-h-full flex flex-col bg-storm-void text-foreground overflow-x-hidden">
+        {children}
       </body>
     </html>
   );

@@ -1,183 +1,159 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { DashboardHeader } from "@/components/layout/DashboardHeader";
-import { OCCard } from "@/components/oc/OCCard";
-import { Button } from "@/components/ui/button";
-import { useAuth } from "@/lib/supabase-store";
-import { fetchMyOCs, deleteOC, reorderOCs } from "@/lib/supabase-queries";
-import type { OC } from "@/lib/types";
-import { Plus, Users, Sparkles, Loader2, GripVertical } from "lucide-react";
+import { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { toast } from "sonner";
+import Lenis from "lenis";
+import Navigation from "@/components/arcanum/Navigation";
+import HeroSection from "@/components/arcanum/hero/HeroSection";
+import GallerySection from "@/components/arcanum/gallery/GallerySection";
+import ConScheduleSection from "@/components/arcanum/ConScheduleSection";
+import ContactSection from "@/components/arcanum/ContactSection";
+import FooterSection from "@/components/arcanum/footer/FooterSection";
 
-export default function Dashboard() {
-  const { user, loading: authLoading } = useAuth();
-  const router = useRouter();
-  const [ocs, setOcs] = useState<OC[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [sortBy, setSortBy] = useState<"custom" | "newest" | "brand" | "name">("custom");
-  const [dragIdx, setDragIdx] = useState<number | null>(null);
-  const [overIdx, setOverIdx] = useState<number | null>(null);
+/* ─── Floating mana particle ─── */
+function ManaParticle({ delay, color, size, left }: { delay: number; color: string; size: number; left: string }) {
+  return (
+    <motion.div
+      className="absolute rounded-full pointer-events-none"
+      style={{ 
+        left, 
+        width: size, 
+        height: size, 
+        backgroundColor: color,
+        boxShadow: `0 0 ${size * 2}px ${color}`,
+        filter: `blur(${size / 3}px)`
+      }}
+      initial={{ bottom: "-5%", opacity: 0, scale: 0 }}
+      animate={{ 
+        bottom: "105%", 
+        opacity: [0, 1, 1, 0],
+        scale: [0, 1, 0.5, 0],
+        x: [0, 20, -20, 0]
+      }}
+      transition={{ 
+        duration: 8 + Math.random() * 4, 
+        repeat: Infinity, 
+        delay, 
+        ease: "easeOut" 
+      }}
+    />
+  );
+}
+
+/* ─── Energy orb background ─── */
+function EnergyOrb({ color, className, blur = 100 }: { color: string; className: string; blur?: number }) {
+  return (
+    <motion.div
+      className={`absolute rounded-full pointer-events-none ${className}`}
+      style={{ background: color, filter: `blur(${blur}px)` }}
+      animate={{ 
+        x: [0, 50, -30, 0], 
+        y: [0, -60, 40, 0],
+        scale: [1, 1.2, 0.9, 1]
+      }}
+      transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+    />
+  );
+}
+
+export default function Home() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [orbOpacity, setOrbOpacity] = useState(0);
 
   useEffect(() => {
-    if (authLoading) return;
-    if (!user) {
-      router.push("/auth/login");
-      return;
-    }
-
-    fetchMyOCs()
-      .then(setOcs)
-      .catch(() => toast.error("Failed to load characters"))
-      .finally(() => setLoading(false));
-  }, [user, authLoading, router]);
-
-  async function handleDelete(id: string) {
-    try {
-      await deleteOC(id);
-      setOcs((prev) => prev.filter((o) => o.id !== id));
-      toast.success("OC deleted");
-    } catch {
-      toast.error("Failed to delete");
-    }
-  }
-
-  const handleDragStart = useCallback((idx: number) => {
-    setDragIdx(idx);
-  }, []);
-
-  const handleDragOver = useCallback((e: React.DragEvent, idx: number) => {
-    e.preventDefault();
-    setOverIdx(idx);
-  }, []);
-
-  const handleDrop = useCallback((idx: number) => {
-    if (dragIdx === null || dragIdx === idx) {
-      setDragIdx(null);
-      setOverIdx(null);
-      return;
-    }
-
-    setOcs((prev) => {
-      const next = [...prev];
-      const [moved] = next.splice(dragIdx, 1);
-      next.splice(idx, 0, moved);
-      reorderOCs(next.map((o) => o.id)).catch(() => toast.error("Failed to save order"));
-      return next;
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
     });
 
-    setDragIdx(null);
-    setOverIdx(null);
-  }, [dragIdx]);
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
 
-  const handleDragEnd = useCallback(() => {
-    setDragIdx(null);
-    setOverIdx(null);
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
   }, []);
 
-  if (authLoading || loading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center">
-        <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
-      </div>
-    );
-  }
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
-  const sorted = [...ocs].sort((a, b) => {
-    if (sortBy === "brand") return b.brand - a.brand;
-    if (sortBy === "name") return a.name.localeCompare(b.name);
-    return 0;
-  });
+  useEffect(() => {
+    const handleScroll = () => {
+      const vh = window.innerHeight;
+      const progress = (window.scrollY - vh) / (vh * 0.5);
+      setOrbOpacity(Math.max(0, Math.min(1, progress)));
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  const isDragging = dragIdx !== null;
+  const particles = useMemo(() =>
+    Array.from({ length: isMobile ? 25 : 40 }, (_, i) => ({
+      id: i,
+      delay: Math.random() * 10,
+      color: ["#c2ac7b", "#1e6b8a", "#d4a373", "#0d4a6b", "#d49a1a"][Math.floor(Math.random() * 5)],
+      size: isMobile ? 1.5 + Math.random() * 3 : 2 + Math.random() * 6,
+      left: `${Math.random() * 100}%`
+    })),
+    [isMobile]
+  );
 
   return (
-    <div className="min-h-screen">
-      <DashboardHeader />
+    <div className="relative overflow-x-hidden">
+      {/* ═══════ Mana Particles + Energy Orbs Layer ═══════ */}
+      <motion.div
+        className="fixed inset-0 pointer-events-none z-0 overflow-hidden w-full h-full"
+        style={{ opacity: orbOpacity }}
+      >
+        {particles.map((p) => (
+          <ManaParticle key={p.id} {...p} />
+        ))}
 
-      <main className="mx-auto max-w-5xl px-2 sm:px-4 py-4 sm:py-8">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 sm:mb-8">
-          <div>
-            <h1 className="text-lg sm:text-2xl font-semibold tracking-tight">My Characters</h1>
-            <p className="text-xs sm:text-sm text-muted-foreground mt-0.5 sm:mt-1">
-              {ocs.length} OC{ocs.length !== 1 ? "s" : ""}
-              {sortBy === "custom" && ocs.length > 1 && (
-                <span className="ml-2 text-[10px] sm:text-xs text-primary/70">(drag to reorder)</span>
-              )}
-            </p>
-          </div>
+        {/* ═══════ Energy Orbs ═══════ */}
+        <EnergyOrb color="rgba(194, 172, 123, 0.15)" className="w-[250px] h-[250px] md:w-[600px] md:h-[600px] -top-10 md:-top-40 -left-10 md:-left-40" blur={isMobile ? 40 : 100} />
+        <EnergyOrb color="rgba(30, 107, 138, 0.12)" className="w-[200px] h-[200px] md:w-[500px] md:h-[500px] top-[20%] -right-10 md:-right-40" blur={isMobile ? 40 : 100} />
+        <EnergyOrb color="rgba(212, 163, 115, 0.1)" className="w-[150px] h-[150px] md:w-[400px] md:h-[400px] top-[40%] md:top-[60%] left-[5%] md:left-[20%]" blur={isMobile ? 30 : 100} />
+        <EnergyOrb color="rgba(139, 0, 0, 0.08)" className="w-[150px] h-[150px] md:w-[350px] md:h-[350px] bottom-[5%] md:bottom-[10%] right-[10%] md:right-[30%]" blur={isMobile ? 30 : 100} />
+      </motion.div>
 
-          <div className="flex items-center gap-2">
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-              className="h-9 rounded-md border border-border bg-card px-3 text-xs sm:text-sm text-foreground focus:ring-2 focus:ring-accent flex-1 sm:flex-initial appearance-none cursor-pointer"
-            >
-              <option value="custom">Custom Order</option>
-              <option value="newest">Newest</option>
-              <option value="brand">Brand Level</option>
-              <option value="name">Name</option>
-            </select>
-
-            <Button render={<Link href="/create" />} className="flex-1 sm:flex-initial text-xs sm:text-sm">
-              <Plus className="h-4 w-4 mr-1 sm:mr-1.5" />
-              <span className="sm:inline">New OC</span>
-            </Button>
-          </div>
+      <Navigation />
+      
+      <main className="relative flex flex-col">
+        {/* Hero Section - The Storm-Crowned Castle */}
+        <div id="hero">
+          <HeroSection />
         </div>
 
-        {ocs.length === 0 ? (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex flex-col items-center justify-center py-24 text-center"
-          >
-            <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-muted">
-              <Users className="h-8 w-8 text-muted-foreground" />
-            </div>
-            <h2 className="text-xl font-medium mb-2">No characters yet</h2>
-            <p className="text-muted-foreground mb-8 max-w-sm">
-              Create your first Original Character and start finding matches!
-            </p>
-            <Button size="lg" render={<Link href="/create" />}>
-              <Sparkles className="h-5 w-5 mr-2" />
-              Create Your First OC
-            </Button>
-          </motion.div>
-        ) : (
-          <div className="grid gap-2 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3 overflow-hidden">
-            {sorted.map((oc, idx) => (
-              <motion.div
-                key={oc.id}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{
-                  opacity: dragIdx === idx ? 0.5 : 1,
-                  y: 0,
-                  scale: overIdx === idx && dragIdx !== null ? 1.02 : 1,
-                }}
-                transition={{ duration: 0.2 }}
-                draggable={sortBy === "custom"}
-                onDragStart={() => handleDragStart(idx)}
-                onDragOver={(e) => handleDragOver(e, idx)}
-                onDrop={() => handleDrop(idx)}
-                onDragEnd={handleDragEnd}
-                className={sortBy === "custom" ? "cursor-grab active:cursor-grabbing" : ""}
-              >
-                <div className="relative">
-                  {sortBy === "custom" && (
-                    <div className="absolute -left-1 top-1/2 -translate-y-1/2 z-10 text-muted-foreground/50">
-                      <GripVertical className="h-4 w-4" />
-                    </div>
-                  )}
-                  <OCCard oc={oc} onDelete={handleDelete} />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        )}
+        {/* Gallery Section - The Reliquary */}
+        <div id="gallery">
+          <GallerySection />
+        </div>
+
+        {/* Con Schedule Section - The Caravan */}
+        <div id="events">
+          <ConScheduleSection />
+        </div>
+
+        {/* Contact Section - The Royal Decree */}
+        <div id="contact">
+          <ContactSection />
+        </div>
+
+        {/* Footer - The Vampiric Void */}
+        <FooterSection />
       </main>
     </div>
   );
